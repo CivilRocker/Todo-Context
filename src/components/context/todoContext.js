@@ -5,18 +5,44 @@ const todoContext = createContext({});
 export const ContextProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
 
+  const toggleComplete = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id
+          ? {
+              ...prevTodo,
+              completed: !prevTodo.completed,
+            }
+          : prevTodo
+      )
+    );
+  };
   const addTodo = (todo) => {
-    setTodos((prev) => [...prev, { id: Date.now(), todo, completed: false }]);
+    setTodos((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        todo,
+        completed: false,
+      },
+    ]);
   };
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((prevTodo) => prevTodo.id !== id));
   };
   const updateTodo = (id, todo) => {
-    setTodos((prev)=>prev.map((prevTodo)=>prevTodo.id===id?{...prevTodo,todo}:prevTodo))
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id
+          ? {
+              ...prevTodo,
+              todo,
+            }
+          : prevTodo
+      )
+    );
   };
-  const toggleComplete = (id) => {
-    setTodos((prev)=>prev.map((prevTodo)=>prevTodo.id===id?{...prevTodo,completed:!prevTodo.completed}:prevTodo))
-  };
+
   const value = {
     todos,
     setTodos,
@@ -25,9 +51,11 @@ export const ContextProvider = ({ children }) => {
     updateTodo,
     toggleComplete,
   };
-  return <todoContext.Provider value={value}>{children}</todoContext.Provider>;
+  return (
+    <todoContext.Provider value={value}> {children} </todoContext.Provider>
+  );
 };
 
 export const useTodo = () => {
-    return useContext(todoContext)
+  return useContext(todoContext);
 };
