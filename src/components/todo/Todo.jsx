@@ -35,9 +35,10 @@ const Todo = ({ todo, index }) => {
         type="checkbox"
         checked={todo.completed}
         onChange={() => toggleComplete(todo.id)}
+        style={{border:"1px solid black",padding:"5px"}}
       />
-      <button onClick={() => handleUpdate(todo.id, update)}>Update</button>
-      <button style={{ background: "red",color:"white",margin:"2px",fontWeight:"bold" }} onClick={() => deleteTodo(todo.id)}>
+      <button style={{padding:"5px",fontWeight:"bold",fontFamily:"sans-serif"}} onClick={() => handleUpdate(todo.id, update)}>Update</button>
+      <button style={{ background: "red",color:"cyan",padding:"5px",margin:"2px",fontWeight:"bold" }} onClick={() => deleteTodo(todo.id)}>
         Delete
       </button>
     </div>

@@ -25,8 +25,9 @@ const TodoList = () => {
           placeholder="Add Todo Task here..."
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
+          style={{border:"2px solid black",color:"black"}}
         />
-        <button type="submit">Add Todo</button>
+        <button type="submit" style={{background:"green",padding:"5px",marginLeft:"10px"}}>Add Todo</button>
       </form>
       <div>
         {todos && todos.map((item,i) => <Todo key={item.id} todo={item} index={i} />)}
