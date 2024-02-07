@@ -31,9 +31,15 @@ const Todo = ({ todo, index }) => {
       ) : (
         <h4>{todo.todo}</h4>
       )}
-      <input type="checkbox" checked={todo.completed} onChange={()=>toggleComplete(todo.id)} />
+      <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={() => toggleComplete(todo.id)}
+      />
       <button onClick={() => handleUpdate(todo.id, update)}>Update</button>
-      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <button style={{ background: "red" }} onClick={() => deleteTodo(todo.id)}>
+        Delete
+      </button>
     </div>
   );
 };
