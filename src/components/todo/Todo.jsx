@@ -37,7 +37,7 @@ const Todo = ({ todo, index }) => {
         onChange={() => toggleComplete(todo.id)}
       />
       <button onClick={() => handleUpdate(todo.id, update)}>Update</button>
-      <button style={{ background: "red" }} onClick={() => deleteTodo(todo.id)}>
+      <button style={{ background: "red",color:"white" }} onClick={() => deleteTodo(todo.id)}>
         Delete
       </button>
     </div>
